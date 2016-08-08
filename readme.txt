@@ -1,6 +1,8 @@
 
 <h1>Cherry Framework <small>The most delicious WordPress framework</small></h1>
 
+<h2>This version is re-configured for use with bootstrap 3.x</h2>
+
 <p>Fully responsive design, easy install, steady updates, great number of shortcodes and widgets, integration of Bootstrap functions. All brought to you by Cherry Framework for straightforward experience in website design. <a href="http://www.cherryframework.com/features/">View all features</a></p>
 
 <a href="http://www.cherryframework.com/">Official Cherry Framework website</a>
