@@ -201,20 +201,6 @@
 								"std" => "",
 								"type" => "textarea");
 
-			$options['live_chat_id'] = array( "name" => theme_locals('live_chat_name'),
-					"desc"  => sprintf( theme_locals('live_chat_desc'), "<a href='http://www.olark.com/?r=ad8fbsj2'>Get own account ID.</a>" ),
-					"id"    => "live_chat_id",
-					"std"   => "",
-					"class" => "tiny",
-					"type"  => "text" );
-
-			// $options['tm_live_chat'] = array( "name" => theme_locals('tm_live_chat_name'),
-			// 		"desc"    => theme_locals('tm_live_chat_desc'),
-			// 		"id"      => "tm_live_chat",
-			// 		"type"    => "radio",
-			// 		"std"     => "yes",
-			// 		"options" => $yes_no_array );
-
 // ---------------------------------------------------------
 // Logo & Favicon
 // ---------------------------------------------------------
@@ -248,6 +234,31 @@
 								"id" => "logo_url",
 								"std" => get_stylesheet_directory_uri() . "/images/logo.png",
 								"type" => "upload");
+			
+			$options['navbar_brand_chooser'] = array(
+								"name" => __( 'What kind of Navbar Brand?', CURRENT_THEME ),
+								"desc"    => __( 'Select whether you want a text description in the mobile navbar or an image.  Leave blank for none.', CURRENT_THEME ),
+								"id"      => "navbar_brand_chooser",
+								"type"    => "radio",
+								"std" => "image_navbar_brand",
+								"options" => array('image_navbar_brand' => __('Image Logo in Navbar'), 'text_navbar_brand' => __('Text Only for Navbar Heading')),
+			);		 
+			
+			$options['navbar_brand_img'] = array(
+								"name" => __( 'Navbar Brand', CURRENT_THEME ),
+								"desc"    => __( 'Add a Logo to the Navbar on Mobile', CURRENT_THEME ),
+								"id"      => "navbar_brand_img",
+								"type"    => "upload",
+								"std" => get_stylesheet_directory_uri() . "/images/navbar-logo.png",
+			);
+			
+			$options['navbar_brand_text'] = array(
+								"name" => __( 'Navbar Brand', CURRENT_THEME ),
+								"desc"    => __( 'Add text to the Navbar on Mobile', CURRENT_THEME ),
+								"id"      => "navbar_brand_text",
+								"type"    => "text",
+								"std" => "",
+			);														
 
 			$options['favicon'] = array( "name" => theme_locals('favicon_name'),
 								"desc" => theme_locals('favicon_desc'),

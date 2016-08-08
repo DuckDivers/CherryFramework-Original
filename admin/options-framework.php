@@ -32,7 +32,6 @@ function optionsframework_rolescheck () {
 		// If the user can edit theme options, let the fun begin!
 		add_action( 'admin_menu', 'optionsframework_add_page');
 		add_action( 'admin_menu', 'optionsframework_add_data_managment');
-		add_action( 'admin_menu', 'optionsframework_add_seo');
 		add_action( 'admin_init', 'optionsframework_init' );
 		add_action( 'admin_init', 'optionsframework_mlu_init' );
 		add_action( 'wp_before_admin_bar_render', 'optionsframework_adminbar' );
@@ -184,17 +183,6 @@ if ( !function_exists( 'optionsframework_add_data_managment' ) ) {
 	}
 }
 
-/* Add a subpage called "SEO" to the Cherry Options. */
-
-if ( !function_exists( 'optionsframework_add_seo' ) ) {
-	function optionsframework_add_seo () {
-		$of_page = add_submenu_page('options-framework', 'SEO', 'SEO', 'administrator', 'seo',  'seo_settings_page');
-		// Adds actions to hook in the required css and javascript
-		add_action("admin_print_scripts-$of_page", 'optionsframework_load_scripts_seo');
-		add_action("admin_print_styles-$of_page",'optionsframework_load_styles_seo');
-	}
-}
-
 /* Loads the CSS */
 
 function optionsframework_load_styles() {
@@ -202,9 +190,6 @@ function optionsframework_load_styles() {
 	wp_enqueue_style('color-picker', OPTIONS_FRAMEWORK_DIRECTORY.'css/colorpicker.css');
 }
 
-function optionsframework_load_styles_seo() {
-	wp_enqueue_style('optionsframework', OPTIONS_FRAMEWORK_DIRECTORY.'css/optionsframework.css');
-}
 
 /* Loads the javascript */
 
@@ -227,14 +212,6 @@ function optionsframework_load_scripts_store() {
 	wp_enqueue_script('ajaxbanner', '//www.templatehelp.com/codes/jsbanner/a04/js/ajaxbanner.js', array('jquery'));
 	wp_enqueue_script('ajaxbannerjquery', '//www.templatehelp.com/codes/jsbanner/a04/ajaxbanner.php?banner_id=jsbanner&features=cherry-framework&property[2553][0]=42645&type=17&category=&package=&types=17&orientation=horizontal&skin=blue&pr_code=yB4zGJx5Q0cY73K5N8GC8r3n6BI91a&unbranded=0&size=5&count=30&pr_code=4j5VV9LLkf2aUvBh1TnnTxwbf3xX1C', array('jquery'));
 
-	// Inline scripts from options-interface.php
-	add_action('admin_head', 'of_admin_head');
-}
-
-function optionsframework_load_scripts_seo() {
-	// Enqueued scripts
-	wp_enqueue_script('jquery-ui-core');
-	wp_enqueue_script('options-custom', OPTIONS_FRAMEWORK_DIRECTORY.'js/options-custom.js', array('jquery'));
 	// Inline scripts from options-interface.php
 	add_action('admin_head', 'of_admin_head');
 }
@@ -285,8 +262,8 @@ if ( !function_exists( 'optionsframework_page' ) ) {
 						$support_link = '//info.template-help.com/help/de/cms-blog-templates/wordpress/wordpress-tutorials/';
 					break;
 				}
-
-				echo '<a class="icon-a icon-support" href="'.$support_link.'" target="_blank"><span class="icon"><span>'.theme_locals("support").'</span></span></a>';
+				echo '<a href="https://www.duckdiverllc.com/" style="float:left; font-size: 24px;margin-top: 5px; color: #000;"><i class="dd-duck-icon" style="padding-right: 10px;"></i>Duck Diver Version</a>';
+				echo '<a class="icon-a icon-support" href="mailto:info@duckdiverllc.com?subject=DD Cherry Support"><span class="icon"><span>'.theme_locals("support").'</span></span></a>';
 				echo "<a class='icon-a icon-documentation' href='".$doc_link."' target='_blank'><span class='icon'><span>".theme_locals('documentation')."</span></span></a>";
 			?>
 		</div>

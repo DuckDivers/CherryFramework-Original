@@ -5,12 +5,6 @@
 function cherry_scripts() {
 	if (!is_admin()) {
 		// CherryFramework Scripts
-		wp_deregister_script('jquery');
-		wp_register_script('jquery', PARENT_URL.'/js/jquery-1.7.2.min.js', false, '1.7.2');
-		wp_enqueue_script('jquery');
-		wp_register_script('migrate', PARENT_URL.'/js/jquery-migrate-1.2.1.min.js', array('jquery'), '1.2.1');
-		wp_enqueue_script('migrate');
-
 		wp_register_script('modernizr', PARENT_URL.'/js/modernizr.js', array('jquery'), '2.0.6');
 		wp_register_script('jflickrfeed', PARENT_URL.'/js/jflickrfeed.js', array('jquery'), '1.0');
 		wp_register_script('superfish', PARENT_URL.'/js/superfish.js', array('jquery'), '1.5.3', true);
@@ -52,8 +46,10 @@ function cherry_scripts() {
 			wp_register_script('debouncedresize', PARENT_URL.'/js/jquery.debouncedresize.js', array('jquery'), '1.0', true);
 			wp_register_script('ba-resize', PARENT_URL.'/js/jquery.ba-resize.min.js', array('jquery'), '1.1', true);
 			wp_register_script('isotope', PARENT_URL.'/js/jquery.isotope.js', array('jquery'), '1.5.25', true);
+			wp_register_script('imagesloaded', PARENT_URL.'/js/imagesloaded.js', array('jquery'), '4.1.0', true);
 			wp_enqueue_script('debouncedresize');
 			wp_enqueue_script('ba-resize');
+			wp_enqueue_script('imagesloaded');
 			wp_enqueue_script('isotope');
 		}
 		// only child theme's where overwrite flickr widget

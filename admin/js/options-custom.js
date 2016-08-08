@@ -186,4 +186,27 @@ jQuery(document).ready(function(a) {
 			}
 		});
 	}
+
+	a('#section-navbar_brand_chooser input[type="radio"]').click(function() {
+		var selected = a(this).filter(":checked").val() 
+			if (selected === "text_navbar_brand") {
+				a("#section-navbar_brand_text").fadeIn(50);
+				a("#section-navbar_brand_img").fadeOut(50);
+			}
+			else {
+				a("#section-navbar_brand_img").fadeIn(50);
+				a("#section-navbar_brand_text").fadeOut(50);
+				}
+	});	
+});
+jQuery(document).ready(function(){
+		var preselected = jQuery('#section-navbar_brand_chooser input[type="radio"]:checked').val()
+		if (preselected === "text_navbar_brand"){
+			jQuery("#section-navbar_brand_text").show(0);
+				jQuery("#section-navbar_brand_img").hide(0);
+			}
+			else {
+				jQuery("#section-navbar_brand_img").show(0);
+				jQuery("#section-navbar_brand_text").hide(50);
+				};
 });

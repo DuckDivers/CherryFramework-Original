@@ -3,7 +3,7 @@ Theme Name: cherry
 Description: Used to style the TinyMCE editor.
 */
 html .mceContentBody {
-	max-width: 640px;
+	max-width: 90%;
 }
 * {
 	color: #444;

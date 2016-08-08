@@ -71,6 +71,7 @@ if ( $testi_query->have_posts()) : while ( $testi_query->have_posts() ) : $testi
 	<?php get_search_form(); /* outputs the default Wordpress search form */ ?>
 </div><!--no-results-->
 
+
 <?php endif;
 
 	if ( function_exists('pagination') ) :

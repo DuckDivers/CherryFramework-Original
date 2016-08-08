@@ -372,19 +372,19 @@ table td[class*="span"], table th[class*="span"], .row-fluid table td[class*="sp
 .table td.span4, .table th.span4 {
 	margin-right:0;
 }
-.table td.span5, .table th.span5 {
+.table td.col-md-5, .table th.col-md-5 {
 	margin-right:0;
 }
-.table td.span6, .table th.span6 {
+.table td.col-md-6, .table th.col-md-6 {
 	margin-right:0;
 }
-.table td.span7, .table th.span7 {
+.table td.col-md-7, .table th.col-md-7 {
 	margin-right:0;
 }
-.table td.span8, .table th.span8 {
+.table td.col-md-8, .table th.col-md-8 {
 	margin-right:0;
 }
-.table td.span9, .table th.span9 {
+.table td.col-md-9, .table th.col-md-9 {
 	margin-right:0;
 }
 .table td.span10, .table th.span10 {

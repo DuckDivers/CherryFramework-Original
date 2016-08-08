@@ -175,7 +175,7 @@
 			include_once (CHILD_DIR . '/includes/register-plugins.php');
 
 			//Setup MotoPress
-			include_once (PARENT_DIR . '/includes/register-motopress.php');
+			//include_once (PARENT_DIR . '/includes/register-motopress.php');
 
 			//Include shop
 			if ( file_exists(get_stylesheet_directory().'/shop.php') ) {
@@ -235,7 +235,7 @@
 	include_once (PARENT_DIR . '/includes/theme-testimeta.php');
 
 	//Add the postmeta to Our Team posts
-	include_once (PARENT_DIR . '/includes/theme-teammeta.php');
+	//include_once (PARENT_DIR . '/includes/theme-teammeta.php');
 
 	//Loading options.php for theme customizer
 	include_once (CHILD_DIR . '/options.php');
@@ -243,9 +243,6 @@
 
 	//Framework Data Management
 	include_once (PARENT_DIR . '/admin/data_management/data_management_interface.php');
-
-	//SEO Settings
-	include_once (PARENT_DIR . '/admin/seo/seo_settings_page.php');
 
 	//WP Pointers
 	include_once (PARENT_DIR . '/includes/class.wp-help-pointers.php');
@@ -256,17 +253,9 @@
 	}
 	include_once (PARENT_DIR .'/includes/less-compile.php');
 
-	// Olark Live Chat.
-	if ( is_child_theme() && file_exists( CHILD_DIR . '/includes/live-chat.php' ) ) {
-		include_once ( CHILD_DIR . '/includes/live-chat.php' );
-	} else {
-		include_once ( PARENT_DIR . '/includes/live-chat.php' );
-	}
 
-	// TM Live Chat.
-	// if ( is_admin() && ( 'yes' == of_get_option( 'tm_live_chat', 'yes' ) ) ) {
-	// 	include_once ( PARENT_DIR . '/includes/tm-chat/class-cherry-tm-chat.php' );
-	// }
+	// removes detailed login error information for security
+	add_filter('login_errors',create_function('$a', "return null;"));
 
 	/*
 	 * Loads the Options Panel
@@ -375,44 +364,6 @@
 
 	//remove auto loading rel=next post link in header
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
-
-
-	// WP Pointers
-	if (!function_exists('myHelpPointers')) {
-		add_action('admin_enqueue_scripts', 'myHelpPointers');
-
-		function myHelpPointers() {
-			//First we define our pointers
-			$pointers = array(
-				array(
-					'id'       => 'xyz1', // unique id for this pointer
-					'screen'   => 'themes', // this is the page hook we want our pointer to show on
-					'target'   => '#toplevel_page_options-framework', // the css selector for the pointer to be tied to, best to use ID's
-					'title'    => theme_locals("import_sample_data"),
-					'content'  => theme_locals("import_sample_data_desc"),
-					'position' => array(
-										'edge'   => 'left', //top, bottom, left, right
-										'align'  => 'left', //top, bottom, left, right, middle
-										)
-					),
-				array(
-					'id'       => 'xyz2', // unique id for this pointer
-					'screen'   => 'toplevel_page_options-framework', // this is the page hook we want our pointer to show on
-					'target'   => '#toplevel_page_cherry-plugin-page', // the css selector for the pointer to be tied to, best to use ID's
-					'title'    => theme_locals("import_sample_data"),
-					'content'  => theme_locals("import_sample_data_desc"),
-					'position' => array(
-										'edge'   => 'left', //top, bottom, left, right
-										'align'  => 'left', //top, bottom, left, right, middle
-										)
-					)
-				// more as needed
-			);
-
-			//Now we instantiate the class and pass our pointer array to the constructor
-			$myPointers = new WP_Help_Pointer($pointers);
-		};
-	}
 
 	/*
 	 * Navigation with description
@@ -831,7 +782,7 @@
 										}
 									}
 									if(!isset($slider_in_page_home)){
-										array_splice($content, $pahe_home_content+1, 0, "\t<div class=\"row\">\n\t\t<div class=\"span12\" data-motopress-type=\"static\" data-motopress-static-file=\"static/static-slider.php\">\n\t\t\t<?php get_template_part(\"static/static-slider\"); ?>\n\t\t</div>\n\t</div>\n");
+										array_splice($content, $pahe_home_content+1, 0, "\t<div class=\"row\">\n\t\t<div class=\"col-sm-12\" data-motopress-type=\"static\" data-motopress-static-file=\"static/static-slider.php\">\n\t\t\t<?php get_template_part(\"static/static-slider\"); ?>\n\t\t</div>\n\t</div>\n");
 										writeLog('Change page-home.php');
 										if (file_put_contents($templatePath, $content)) {
 											writeLog('Save ' . $templatePath);
@@ -1632,24 +1583,24 @@ function cherry_get_post_networks( $args = array() ) {
 			switch ($layout) {
 
 				case 'full_width_content':
-					$layout_class = apply_filters( "cherry_layout_wrapper", "span12" );
+					$layout_class = apply_filters( "cherry_layout_wrapper", "col-sm-12" );
 					break;
 
 				case 'content':
-					$layout_class = apply_filters( "cherry_layout_content_column", "span8" );
+					$layout_class = apply_filters( "cherry_layout_content_column", "col-sm-8" );
 					$layout_class .= ' '.of_get_option('blog_sidebar_pos');
 					break;
 
 				case 'sidebar':
-					$layout_class = apply_filters( "cherry_layout_sidebar_column", "span4" );
+					$layout_class = apply_filters( "cherry_layout_sidebar_column", "col-sm-4" );
 					break;
 
 				case 'left_block':
-					$layout_class = apply_filters( "cherry_layout_left_block_column", "span7" );
+					$layout_class = apply_filters( "cherry_layout_left_block_column", "col-sm-7" );
 					break;
 
 				case 'right_block':
-					$layout_class = apply_filters( "cherry_layout_right_block_column", "span5" );
+					$layout_class = apply_filters( "cherry_layout_right_block_column", "col-sm-5" );
 					break;
 			}
 

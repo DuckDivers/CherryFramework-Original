@@ -1,4 +1,9 @@
 <?php
+// Removes extra space from WP-ADMIN Bar in Front End
+ add_action('get_header', 'my_filter_head');
+	 function my_filter_head() {
+    remove_action('wp_head', '_admin_bar_bump_cb');
+}
 // Set the content width based on the theme's design and stylesheet.
 if ( ! isset( $content_width ) )
 	$content_width = 604;
@@ -209,7 +214,7 @@ if ( !function_exists( 'tz_image' ) ) {
 if ( !function_exists( 'tz_grid_gallery' ) ) {
 
 	function tz_grid_gallery($postid, $imagesize) {
-		$single_folio_layout   = of_get_option( 'single_folio_layout', 'grid' );
+		$single_gallery_layout = of_get_option( 'single_gallery_layout', 'grid' );
 		$single_gallery_layout = of_get_option( 'single_gallery_layout', 'grid' );
 
 		if ( $single_gallery_layout == 'masonry' ) {
@@ -219,7 +224,7 @@ if ( !function_exists( 'tz_grid_gallery' ) ) {
 		} ?>
 
 		<script type="text/javascript">
-			jQuery(window).load(function(){
+			jQuery(document).ready(function () {
 				var
 						masonrycontainer = jQuery('.grid_gallery_inner')
 					,	col = 3
@@ -674,7 +679,7 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 
 	if (is_front_page()) {
 		if ($showOnHome == 1)
-			echo '<ul class="breadcrumb breadcrumb__t"><li><a href="' . $homeLink . '">' . $home . '</a><li></ul>';
+			echo '<ul class="breadcrumb breadcrumb__t"><li><a href="' . $homeLink . '">' . $home . '</a></li></ul>';
 		} else {
 			echo '<ul class="breadcrumb breadcrumb__t"><li><a href="' . $homeLink . '">' . $home . '</a></li>' . $delimiter;
 
@@ -707,8 +712,7 @@ if ( !function_exists( 'breadcrumbs' ) ) {
 			}
 			elseif ( is_tax(get_post_type().'_category') ) {
 				$post_name = get_post_type();
-
-				echo $before . sprintf( _x( '%1$s %2$s: %3$s', 'breadcrumbs: portfolio category', CURRENT_THEME ), ucfirst( theme_locals( $post_name ) ), theme_locals('category'), single_cat_title( '', false ) ) . $after;
+				echo $before . ucfirst($post_name) . ' ' . theme_locals('category') . ': ' . single_cat_title( '', false ) . $after;
 			}
 			elseif ( is_single() && !is_attachment() ) {
 				if ( get_post_type() != 'post' ) {

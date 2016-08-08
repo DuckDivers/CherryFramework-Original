@@ -3,8 +3,8 @@
 	$fullwidth = of_get_option('single_folio_layout') != 'fullwidth';
 	$left_block = $fullwidth ? cherry_get_layout_class( 'left_block' ) : cherry_get_layout_class( 'full_width_content' ) ;
 	$right_block = $fullwidth ? cherry_get_layout_class( 'right_block' ) : cherry_get_layout_class( 'full_width_content' ) ;
-	$meta_blok_class = $fullwidth ? '' : 'span4 float-right';
-	$content_blok_class = $fullwidth ? '' : 'span8';
+	$meta_blok_class = $fullwidth ? '' : 'col-sm-4 float-right';
+	$content_blok_class = $fullwidth ? '' : 'col-sm-8';
 	$wrapper_blok_class = $fullwidth ? '' : 'row';
 ?>
 	<!--BEGIN .hentry -->

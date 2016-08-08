@@ -726,6 +726,7 @@ function options_typography_get_google_fonts() {
 			"Ledger" => "Ledger *",
 			"Lekton" => "Lekton *",
 			"Lemon" => "Lemon *",
+			"Libre Baskerville" => "Libre Baskerville *",
 			"Lilita One" => "Lilita One *",
 			"Limelight" => "Limelight *",
 			"Linden Hill" => "Linden Hill *",
@@ -1134,7 +1135,7 @@ function options_typography_styles() {
 	}
 	if ( of_get_option( 'google_mixed_3' ) ) {
 		$input = of_get_option( 'google_mixed_3' );
-		$output .= options_typography_font_styles_body( $input , 'body');
+		$output .= options_typography_font_styles (of_get_option('google_mixed_3') , 'body');
 	}
 	if ( of_get_option( 'logo_typography' ) ) {
 		$input = of_get_option( 'logo_typography' );

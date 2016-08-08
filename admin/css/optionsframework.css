@@ -5,6 +5,9 @@
 #optionsframework .wrap{
 	margin: 0;
 }
+#optionsframework input#navbar_brand_text {
+    width: 300px;
+}
 #optionsframework h3{cursor:default;}
 #optionsframework .submit{margin:0; padding: 5px 0; text-align: right;}
 #optionsframework .section{padding:10px 10px 0;}

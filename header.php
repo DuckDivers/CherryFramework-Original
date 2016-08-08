@@ -20,9 +20,8 @@
 	} elseif ( is_single() ) {
 		wp_title('');
 	} else {
-		wp_title( ' | ', true, 'right' ); bloginfo( 'name' );
+		wp_title( ' | ', true, 'right' ); 
 	} ?></title>
-	<meta name="description" content="<?php wp_title(); echo ' | '; bloginfo( 'description' ); ?>" />
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="profile" href="//gmpg.org/xfn/11" />
@@ -34,8 +33,7 @@
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo( 'name' ); ?>" href="<?php bloginfo( 'rss2_url' ); ?>" />
 	<link rel="alternate" type="application/atom+xml" title="<?php bloginfo( 'name' ); ?>" href="<?php bloginfo( 'atom_url' ); ?>" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?php echo CHILD_URL; ?>/bootstrap/css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" media="all" href="<?php echo CHILD_URL; ?>/bootstrap/css/responsive.css" />
+	<link rel="stylesheet" type="text/css" media="all" href="<?php echo CHILD_URL; ?>/bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php echo PARENT_URL; ?>/css/camera.css" />
 	<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 	<?php
@@ -109,6 +107,10 @@
 </head>
 
 <body <?php body_class(); ?>>
+<?php 
+  // Fix menu overlap bug..
+  if ( is_admin_bar_showing() ) echo '<div class="admin-bar-fix"></div>'; 
+?>
 	<div id="motopress-main" class="main-holder">
 		<!--Begin #motopress-main-->
 		<header class="motopress-wrapper header">

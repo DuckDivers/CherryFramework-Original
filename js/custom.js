@@ -24,15 +24,25 @@ jQuery(document).ready(function(){
 // ---------------------------------------------------------
 	jQuery(".thumbnail").parent().each(function(){magnific_popup_init(jQuery(this))});
 // ---------------------------------------------------------
+// Google Map Overlay
+//----------------------------------------------------------
+jQuery('.google-map').on('click tap', function () {
+    jQuery('.google-map iframe').css("pointer-events", "auto");
+});
 // Tooltip
 // ---------------------------------------------------------
-	jQuery("[rel='tooltip']").tooltip();
+	jQuery("[rel='tooltip']").tooltip({ placement: 'top' });
 // ---------------------------------------------------------
 // Back to Top
 // ---------------------------------------------------------
 	jQuery(window).scroll(function () {
 		if (jQuery(this).scrollTop() > 100) {
-			jQuery('#back-top').fadeIn();
+			jQuery('#back-top').fadeIn('fast', function(){
+				clearTimeout(jQuery.data(this, 'scrollTimer'));
+    				jQuery.data(this, 'scrollTimer', setTimeout(function() {
+       		 jQuery('#back-top').delay(2000).fadeOut('slow');// do something after 2s
+	    		}, 2000));
+			});
 		} else {
 			jQuery('#back-top').fadeOut();
 		}
@@ -180,6 +190,7 @@ function magnific_popup_init(item) {
 		gallery: {enabled:true}
 	});
 }
+
 // ---------------------------------------------------------
 // Cookie utilities
 // ---------------------------------------------------------
@@ -194,3 +205,21 @@ function createCookie(name, value, days) {
 function deleteCookie(name) {
 	createCookie( name, "", { expires: -1 } );
 }
+
+// Magnific Popup using Popup Class
+//-------------------------------------------
+jQuery(document).ready(function(){
+	jQuery('.popup').magnificPopup({
+		type: 'image',
+		closeOnContentClick: true,
+		closeBtnInside: false,
+		mainClass: 'mfp-no-margins mfp-with-zoom', // class to remove default margin from left and right side
+		image: {
+			verticalFit: true
+		},
+		zoom: {
+			enabled: true,
+			duration: 300 // don't foget to change the duration also in CSS
+		}
+	});
+});

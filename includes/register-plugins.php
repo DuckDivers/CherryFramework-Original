@@ -42,12 +42,12 @@ function cherry_register_required_plugins() {
 	 */
 	$plugins = array(
 		array(
-			'name'               => 'Cherry Plugin', // The plugin name.
-			'slug'               => 'cherry-plugin', // The plugin slug (typically the folder name).
-			'source'             => PARENT_DIR . '/includes/plugins/cherry-plugin.zip', // The plugin source.
+			'name'               => 'Duck Cherry Plugin', // The plugin name.
+			'slug'               => 'duck-cherry-plugin', // The plugin slug (typically the folder name).
+			'source'             => PARENT_DIR . '/includes/plugins/duck-cherry-plugin.zip', // The plugin source.
 			'required'           => true, // If false, the plugin is only 'recommended' instead of required.
 			'version'            => '1.1', // E.g. 1.0.0. If set, the active plugin must be this version or higher, otherwise a notice is presented.
-			'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+			'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
 			'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
 			'external_url'       => '', // If set, overrides default API URL and points to an external URL.
 		),
@@ -56,6 +56,24 @@ function cherry_register_required_plugins() {
 			'slug'      => 'contact-form-7',
 			'required'  => true,
 		),
+		array(
+			'name' 		=> 'Quacky Shortcodes',
+			'slug'		=> 'quacky-shortcodes',
+			'sourece'	=> PARENT_DIR . '/includes/plugins/quacky-shortcodes.zip',
+			'required'  => true, // If false, the plugin is only 'recommended' instead of required.
+			'force_activation'	=> true,
+			'force_deactivation' => false,
+			'external_url'	=> '',
+		),
+		array(
+			'name' 		=> 'GitHub Updater',
+			'slug'		=> 'github-updater',
+			'sourece'	=> PARENT_DIR . '/includes/plugins/github-updater.zip',
+			'required'  => true, // If false, the plugin is only 'recommended' instead of required.
+			'force_activation'	=> true,
+			'force_deactivation' => false,
+			'external_url'	=> '',
+		)		
 	);
 
 	/**

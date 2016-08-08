@@ -17,18 +17,14 @@
 	$faq_query = new WP_Query( $args );
 
 	if ( $faq_query->have_posts() ) : ?>
-	<dl class="faq-list">
-	<?php while ( $faq_query->have_posts() ) : $faq_query->the_post(); ?>
-		<dt class="faq-list_h">
-			<h4 class="marker"><?php echo theme_locals("q"); ?></h4>
-			<h4><?php the_title(); ?></h4>
-		</dt>
-		<dd id="post-<?php the_ID(); ?>" class="faq-list_body">
-			<h4 class="marker"><?php echo theme_locals("a"); ?></h4>
-			<?php the_content(); ?>
-		</dd>
+	<div id="<?php echo rand(111111111,999999999);?>" class="accordion">
+    <?php while ( $faq_query->have_posts() ) : $faq_query->the_post();
+	 	$title =  get_the_title();
+		$content = get_the_content();
+			echo do_shortcode('[accordion title=" '.$title.' "] ' .$content. '[/accordion]'); ?>
 	<?php endwhile; ?>
-	</dl>
+	
+	</div>
 
 <?php else: ?>
 
