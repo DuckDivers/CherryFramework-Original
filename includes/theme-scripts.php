@@ -70,9 +70,11 @@ add_action('wp_enqueue_scripts', 'cherry_scripts');
 function cherry_stylesheets() {
 	if ( CURRENT_THEME != 'cherry' ) {
 		if ( file_exists( CHILD_DIR . '/main-style.css' ) ) {
-			wp_enqueue_style( CURRENT_THEME, CHILD_URL . '/main-style.css', false, null, 'all' );
+			wp_enqueue_style( CURRENT_THEME, CHILD_URL . '/main-style.css', 
+					 	false, 
+					 	filemtime( get_stylesheet_directory() . '/main-style.css'), 
+					 	'all' );		
 		}
-
 		if ( file_exists( CHILD_DIR . '/includes/widgets/my-flickr-widget.php' ) ) {
 			wp_register_style( 'prettyPhoto', PARENT_URL.'/css/prettyPhoto.css', false, '3.1.5', 'all' );
 			wp_enqueue_style( 'prettyPhoto' );
